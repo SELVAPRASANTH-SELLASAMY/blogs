@@ -1,0 +1,46 @@
+.text_renderer:not(:has(.img)){
+    line-height: 1.5rem;
+    cursor: pointer;
+}
+.text_renderer > *:empty::before{
+    content: "Text will appear here...";
+    color: var(--lightGrey);
+}
+.text_renderer h2{
+    font-size: var(--small-11);
+}
+.text_renderer h2::before{
+    top: 2rem;
+}
+.text_renderer h5{
+    font-size: var(--small-1);
+    font-weight: 500;
+    margin: 1rem 0;
+}
+.text_renderer p{
+    font-size: var(--small);
+    color: var(--lightBlue);
+}
+.text_renderer .img{
+    width: 70%;
+    border-radius: .5rem;
+    margin: 2.5rem 17.5%;
+    margin-top: 5rem;
+    box-shadow: var(--smokeShadow);
+    overflow: hidden;
+}
+.text_renderer figure image{
+    width: 100%;
+}
+@media screen and (width <= 769px){
+    .text_renderer .img{
+        width: 100%;
+        margin: 2.5rem 0;
+        margin-top: 5rem;
+    }
+}
+@media screen and (width <= 500px){
+    .text_renderer h2{
+        font-size: var(--small-15);
+    }
+}

@@ -1,38 +1,101 @@
-.App {
+:root{
+  --font-radio-canada: Radio Canada, sans-serif;
+  --font-sans: sans-serif;
+  --green: #72e2ae;
+  --lightGreen: #72e2ae33;
+  --lightBlue: #bfbecb;
+  --lightGrey:#ffffff33;
+  --tileBlue: #162033;
+  --commonBg: #0b1223;
+  --smokeShadow: rgba(255, 255, 255, 0.02) 0px 1px 3px 0px, rgba(197, 226, 255, 0.15) 0px 0px 0px 1px;
+  --x-small: .85rem;
+  --x1-small: .9rem;
+  --small: 1rem;
+  --small-1: 1.25rem;
+  --small-15: 1.5rem;
+  --small-11: 2rem;
+  --small-2: 2.25rem;
+  --medium: 3rem;
+  --xx-large: 8rem;
+  --line-height-p: 1.6rem;
+}
+header,section,footer{
+  padding: 0 5%;
+}
+section{
+  font-family: sans-serif;
+  margin: 2.5rem 0;
+  scroll-margin: 100px;
+}
+h2{
+  color: #ffffff;
+  font-size: var(--small-2);
+  text-transform: uppercase;
   text-align: center;
+  position: relative;
+  margin-bottom: 6rem;
+}
+h2::before{
+  font-size: var(--xx-large);
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: .05;
+  z-index: -1;
+}
+span.bottomLine{
+  width: 10rem;
+  height: .4rem;
+  border-radius: 50px;
+  background-color: var(--lightGreen);
+  position: absolute;
+  bottom: -2rem;
+  left: calc(50% - 5rem);
+  display: block;
+  overflow: hidden;
+}
+span.movingBall{
+  height: .4rem;
+  width: .4rem;
+  border-radius: 50px;
+  background-color: var(--green);
+  position: absolute;
+  left: -.4rem;
+  top: 0;
+  animation: rollBall 3s ease-in-out infinite normal;
+}
+@keyframes  rollBall{
+  From{left: -.4rem;}
+  To{left: 100%;}
+}
+::-webkit-scrollbar{
+  width: .5rem;
+  background-color: grey;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 50px;
+  background-color: rgb(187, 187, 187);
+}
+::selection{
+  background-color: var(--green);
+  color: #000000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (width <= 695px) {
+  h2::before{
+      max-width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (width <= 550px){
+  :root{
+      --medium: 2rem;
+      --small-1: 1.1rem;
+      --small-2: 2rem;
   }
 }
