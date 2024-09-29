@@ -15,6 +15,15 @@ function Textrenderer({blog,index}){
             {blog.type === 'image' && 
                 blog.content && <Lazyimage componentClass={textrendererStyle.img} placeholder={blog.content} source={blog.content}/>
             }
+            {(blog.type === 'description_list' || blog.type === 'tech_stacks') &&
+                <ul className={blog.type === 'tech_stacks' ? textrendererStyle.tech_stacks : null}>
+                    {
+                        blog.content.split("\n").map((text,index)=>(
+                            <li key={index}>{text}</li>
+                        ))
+                    }
+                </ul>
+            }
         </div>
     );
 }

@@ -32,6 +32,26 @@
 .text_renderer figure image{
     width: 100%;
 }
+.text_renderer ul.tech_stacks{
+    background-color: var(--tileBlue);
+    border-radius: .5rem;
+    box-shadow: var(--smokeShadow);
+    border-left: .3rem solid var(--green);
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+}
+.text_renderer li{
+    list-style-position: outside;
+    margin-left: 1rem;
+    color: var(--lightBlue);
+    font-size: var(--small);
+    line-height: 2rem;
+    letter-spacing: 1px;
+}
+.text_renderer li::marker{
+    color: var(--green);
+    font-size: var(--small-15);
+}
 @media screen and (width <= 769px){
     .text_renderer .img{
         width: 100%;

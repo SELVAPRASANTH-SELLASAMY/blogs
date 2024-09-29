@@ -9,7 +9,7 @@ function Editor(){
     const [blogs,addBlogs] = useState([
         {
             content:'',
-            type:'image'
+            type:'paragraph'
         }
     ]);
     const [edit,startEdit] = useState(0);
@@ -23,12 +23,12 @@ function Editor(){
     },[blogs,edit]);
     return(
         <section className={editorStyles.editor}>
-            <EditorContext.Provider value={{blogs,addBlogs,startEdit}}>
+            <EditorContext.Provider value={{addBlogs,startEdit}}>
                 {
                     blogs.map((blog,index)=>(
                         <div key={index}>
                             <Textrenderer blog={blog} index={index}/>
-                            {edit === index && <Textarea index={index}/>}
+                            {edit === index && <Textarea blog={blog} index={index}/>}
                         </div>
                     ))
                 }

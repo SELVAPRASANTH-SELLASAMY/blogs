@@ -49,21 +49,6 @@ textarea::-webkit-scrollbar,textarea::-webkit-scrollbar-thumb,textarea::-webkit-
     gap: 1rem;
     background-color: var(--tileBlue);
 }
-.toolbar button{
-    user-select: none;
-    cursor: pointer;
-    font-size: var(--small);
-    border-radius: 50px;
-    background-color: var(--lightGrey);
-    color: #ffffff;
-    padding: .5rem 1rem;
-    border: none;
-    transition: scale 250ms;
-}
-.toolbar button.active{
-    background-color: var(--lightGreen);
-    color: var(--green);
-}
 .textArea .toolbar figure{
     font-size: var(--small-11) !important;
     color: var(--lightBlue);

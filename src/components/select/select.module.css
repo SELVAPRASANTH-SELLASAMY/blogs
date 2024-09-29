@@ -1,0 +1,55 @@
+.select{
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+}
+.input{
+    width: 12rem;
+    padding: .5rem 1rem;
+    font-size: var(--small);
+    border-radius: .25rem;
+    outline: none;
+    background-color: unset;
+    box-shadow: var(--smokeShadow);
+    border: none;
+    color: #ffffff;
+    border: .1rem solid transparent;
+    transition: border 250ms;
+}
+.input::first-letter{/*FIXME:It wasn't working*/
+    text-transform: uppercase;
+}
+.input:focus{
+    border-color: var(--green);
+}
+ul.options{
+    background-color: var(--tileBlue);
+    width: 100%;
+    list-style: none;
+    box-shadow: var(--smokeShadow);
+    border-radius: .25rem;
+    overflow: hidden;
+    position: absolute;
+    top: 2.5rem;
+    display: none;
+}
+.input:focus ~  ul.options, ul.options:active{
+    display: block;
+}
+ul.options li{
+    margin: .1rem;
+    padding: .25rem 1rem;
+    border-radius: inherit;
+    cursor: pointer;
+    transition: background-color 250ms;
+    transition: color 250ms;
+    font-size: var(--small);
+    user-select: none;
+}
+ul.options li:hover{
+    background-color: var(--lightGrey);
+}
+ul.options li.active{
+    background-color: var(--lightGreen);
+    color: var(--green);
+}
