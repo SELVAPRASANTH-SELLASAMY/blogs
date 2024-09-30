@@ -15,9 +15,8 @@
     color: #ffffff;
     border: .1rem solid transparent;
     transition: border 250ms;
-}
-.input::first-letter{/*FIXME:It wasn't working*/
-    text-transform: uppercase;
+    cursor: pointer;
+    text-transform: capitalize;
 }
 .input:focus{
     border-color: var(--green);
@@ -30,7 +29,7 @@ ul.options{
     border-radius: .25rem;
     overflow: hidden;
     position: absolute;
-    top: 2.5rem;
+    top: 3.5rem;
     display: none;
 }
 .input:focus ~  ul.options, ul.options:active{

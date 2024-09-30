@@ -2,8 +2,9 @@ import textareaStyles from './textarea.module.css';
 import { EditorContext } from '../editor/Editor';
 import { useContext } from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
+import { GoTriangleUp, GoTriangleDown } from "react-icons/go";
 import Select from '../select/Select';
-function Textarea({blog,index}){
+function Textarea({blog,index,length}){
     const {addBlogs,startEdit} = useContext(EditorContext);
     const handleChange = (e) => {
         addBlogs(prevBlogs => {
@@ -27,6 +28,13 @@ function Textarea({blog,index}){
             return [...prevBlogs];
         });
     }
+    const handleMove = (direction) => {
+        addBlogs(prevBlogs => {
+            [prevBlogs[index],prevBlogs[direction === "up" ? index - 1 : index + 1]] = [prevBlogs[direction === "up" ? index - 1 : index + 1],prevBlogs[index]];
+            return [...prevBlogs];
+        });
+        startEdit(prev => direction === "up" ? --prev : ++prev);
+    }
     return(
         <div className={textareaStyles.textArea}>
             {blog.type !== "image" ? 
@@ -37,6 +45,12 @@ function Textarea({blog,index}){
                 <Select blog={blog} index={index}/>
                 <figure aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? handleDelete : null}>
                     <RiDeleteBin5Line/>
+                </figure>
+                <figure aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? ()=>handleMove("up") : null}>
+                    <GoTriangleUp/>
+                </figure>
+                <figure aria-disabled={index < (length - 1) ? false : true} onClick={index < (length - 1) ? ()=>handleMove("down") : null}>
+                    <GoTriangleDown/>
                 </figure>
             </div>
         </div>

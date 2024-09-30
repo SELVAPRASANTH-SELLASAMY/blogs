@@ -28,7 +28,7 @@ function Editor(){
                     blogs.map((blog,index)=>(
                         <div key={index}>
                             <Textrenderer blog={blog} index={index}/>
-                            {edit === index && <Textarea blog={blog} index={index}/>}
+                            {edit === index && <Textarea blog={blog} index={index} length={blogs.length}/>}
                         </div>
                     ))
                 }
