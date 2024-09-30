@@ -1,0 +1,68 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+header h1{
+    font-size: var(--small-2);
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+}
+header h1::after{
+    content: ".";
+    color: #ffffff;
+}
+header .moreIcon{
+    font-size: var(--small-1);
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50px;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: grid;
+    place-content: center;
+    position: relative;
+    transition: background-color 250ms;
+}
+nav{
+    background-color: var(--tileBlue);
+    font-size: var(--small);
+    color: var(--lightBlue);
+    border-radius: .5rem;
+    overflow: hidden;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    width: 0;
+    height: 0;
+    transition: 250ms;
+    transition-delay: 250ms;
+}
+.moreIcon:hover nav{
+    height: 140.8px;
+    width: 111.48px;
+    transition-delay: unset;
+    box-shadow: var(--smokeShadow);
+}
+nav li{
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+nav li:hover{
+    background-color: var(--lightGreen);
+    color: var(--green);
+}
+nav li span{
+    display: grid;
+    place-content: center;
+}

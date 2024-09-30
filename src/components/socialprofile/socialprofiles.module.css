@@ -1,0 +1,28 @@
+.socialMedias{
+    color: var(--lightBlue);
+    font-size: 2.5rem;
+    display: flex;
+    gap: 1rem;
+}
+.socialMedias ul{
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+    overflow: hidden;
+    border-radius: .25rem;
+    cursor: pointer;
+    box-shadow: var(--smokeShadow);
+}
+.socialMedias ul :nth-child(even){
+    background-color: var(--green);
+    color: #000000;
+}
+.socialMedias ul > *{
+    min-height: 40px;
+    padding: .5rem;
+    transition: 500ms;
+    border-radius: .25rem;
+}
+.socialMedias ul:hover > *{
+    transform: translateY(-40px);
+}

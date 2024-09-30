@@ -17,6 +17,7 @@ function Select({blog,index}){
                 activeOption = option;
                 activeOption.classList.add(selectStyle.active);
             }
+            return () => option.onclick = null;
         });
     },[addBlogs,index]);
     return(

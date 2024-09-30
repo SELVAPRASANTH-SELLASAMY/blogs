@@ -43,15 +43,15 @@ function Textarea({blog,index,length}){
             }
             <div className={textareaStyles.toolbar}>
                 <Select blog={blog} index={index}/>
-                <figure aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? handleDelete : null}>
+                <span aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? handleDelete : null}>
                     <RiDeleteBin5Line/>
-                </figure>
-                <figure aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? ()=>handleMove("up") : null}>
+                </span>
+                <span aria-disabled={index >= 1 ? false : true} onClick={index >= 1 ? ()=>handleMove("up") : null}>
                     <GoTriangleUp/>
-                </figure>
-                <figure aria-disabled={index < (length - 1) ? false : true} onClick={index < (length - 1) ? ()=>handleMove("down") : null}>
+                </span>
+                <span aria-disabled={index < (length - 1) ? false : true} onClick={index < (length - 1) ? ()=>handleMove("down") : null}>
                     <GoTriangleDown/>
-                </figure>
+                </span>
             </div>
         </div>
     )

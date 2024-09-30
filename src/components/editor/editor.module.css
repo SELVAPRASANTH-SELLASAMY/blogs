@@ -1,3 +1,6 @@
+.editor{
+    margin-top: 5rem;
+}
 h2::before{
     content: 'blog';
 }
@@ -9,7 +12,6 @@ h2::before{
     display: inline-flex;
     place-content: center;
     transition: scale 250ms;
-    /* margin-top: 1rem; */
 }
 .editor button:active,.editor figure:active{
     scale: .95;

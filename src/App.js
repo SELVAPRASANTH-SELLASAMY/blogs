@@ -1,9 +1,13 @@
 import './App.css';
-import { Editor } from './components';
+import { Editor, Header, Footer } from './components';
 function App() {
   return (
     <div className="App">
-      <Editor/>
+      <Header/>
+      <main>
+        <Editor/>
+      </main>
+      <Footer/>
     </div>
   );
 }

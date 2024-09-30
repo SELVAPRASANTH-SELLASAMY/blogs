@@ -49,11 +49,12 @@ textarea::-webkit-scrollbar,textarea::-webkit-scrollbar-thumb,textarea::-webkit-
     gap: 1rem;
     background-color: var(--tileBlue);
 }
-.textArea .toolbar figure{
+.textArea .toolbar span{
     font-size: var(--small-11) !important;
     color: var(--lightBlue);
     cursor: pointer;
 }
-.textArea figure[aria-disabled="true"]{
+.textArea span[aria-disabled="true"]{
     cursor: not-allowed;
+    opacity: .6;
 }
