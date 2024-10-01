@@ -6,17 +6,23 @@ import { createContext, useEffect, useRef, useState } from "react";
 const EditorContext = createContext();
 function Editor(){
     const addButton = useRef();
-    const [blogs,addBlogs] = useState([
-        {
-            content:'',
-            type:'paragraph'
-        }
-    ]);
+    const waitingTime = useRef();
+    const [blogs,addBlogs] = useState(JSON.parse(sessionStorage.getItem("blogs")) || [{content:'', type:'paragraph'}]);
     const [edit,startEdit] = useState(0);
     const handleAdd = () => {
         addBlogs([...blogs,{content:'',type:'paragraph'}]);
         startEdit(prev => ++prev);
     }
+    useEffect(()=>{
+        if(waitingTime.current){
+            clearTimeout(waitingTime.current);
+        }
+        const saveToLocal = () => {
+            sessionStorage.setItem("blogs",JSON.stringify(blogs));
+        }
+        waitingTime.current = setTimeout(saveToLocal,10000);
+        return ()=> clearTimeout(waitingTime.current);
+    },[blogs]);
     useEffect(()=>{
         console.log(blogs);
         addButton.current.ariaDisabled = blogs[edit].content ? false : true;
