@@ -4,10 +4,10 @@ import editorStyles from './editor.module.css';
 import { RiAddCircleFill } from "react-icons/ri";
 import { createContext, useEffect, useRef, useState } from "react";
 const EditorContext = createContext();
-function Editor(){
+function Editor({popup}){
     const addButton = useRef();
     const waitingTime = useRef();
-    const [blogs,addBlogs] = useState(JSON.parse(sessionStorage.getItem("blogs")) || [{content:'', type:'paragraph'}]);
+    const [blogs,addBlogs] = useState(JSON.parse(localStorage.getItem("blogs")) || [{content:'', type:'paragraph'}]);
     const [edit,startEdit] = useState(0);
     const handleAdd = () => {
         addBlogs([...blogs,{content:'',type:'paragraph'}]);
@@ -18,11 +18,12 @@ function Editor(){
             clearTimeout(waitingTime.current);
         }
         const saveToLocal = () => {
-            sessionStorage.setItem("blogs",JSON.stringify(blogs));
+            localStorage.setItem("blogs",JSON.stringify(blogs));
+            popup.current.display("Draft saved!");
         }
         waitingTime.current = setTimeout(saveToLocal,10000);
         return ()=> clearTimeout(waitingTime.current);
-    },[blogs]);
+    },[blogs,popup]);
     useEffect(()=>{
         console.log(blogs);
         addButton.current.ariaDisabled = blogs[edit].content ? false : true;

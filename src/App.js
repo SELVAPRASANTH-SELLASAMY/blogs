@@ -1,15 +1,17 @@
+import { useRef } from 'react';
 import './App.css';
-import { Editor, Header, Footer } from './components';
+import { Editor, Header, Footer, Popup } from './components';
 function App() {
+  const popup = useRef();
   return (
-    <div className="App">
+    <>
       <Header/>
       <main>
-        <Editor/>
+        <Editor popup={popup}/>
       </main>
       <Footer/>
-    </div>
+      <Popup ref={popup}/>
+    </>
   );
 }
-
 export default App;
