@@ -13,7 +13,7 @@ function Textrenderer({blog,index}){
             {blog.type === 'sub_heading' && <h5>{blog.content}</h5>}
             {blog.type === 'paragraph' && <p>{blog.content}</p>}
             {blog.type === 'image' && 
-                blog.content && <Lazyimage componentClass={textrendererStyle.img} placeholder={blog.content} source={blog.content}/>
+                (blog.Image && blog.thumb) && <Lazyimage componentClass={textrendererStyle.img} placeholder={blog.thumb} source={blog.Image}/>
             }
             {(blog.type === 'description_list' || blog.type === 'tech_stacks') &&
                 <ul className={blog.type === 'tech_stacks' ? textrendererStyle.tech_stacks : null}>

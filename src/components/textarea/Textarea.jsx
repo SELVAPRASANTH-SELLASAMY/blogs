@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { GoTriangleUp, GoTriangleDown } from "react-icons/go";
 import Select from '../select/Select';
+import ImageResizer from 'react-image-file-resizer';
 function Textarea({blog,index,length}){
     const {addBlogs,startEdit} = useContext(EditorContext);
     const handleChange = (e) => {
@@ -19,13 +20,28 @@ function Textarea({blog,index,length}){
         });
         startEdit(prev => --prev);
     }
-    const handleImageUpload = (e) => {
+    const handleImageUpload = async(e) => {
         const file = e.target.files[0];
-        const url = URL.createObjectURL(file);
+        const Image = URL.createObjectURL(file);
+        const thumbnail = await resizeImage(file);
         addBlogs(prevBlogs => {
-            prevBlogs[index].content = url;
-            prevBlogs[index].file = file;
+            prevBlogs[index].Image = Image;
+            prevBlogs[index].thumb = thumbnail;
             return [...prevBlogs];
+        });
+    }
+    const resizeImage = (image) => {
+        return new Promise((resolve) => {
+            ImageResizer.imageFileResizer(
+                image,
+                "auto",
+                20,
+                "webp",
+                100,
+                0,
+                (resizedImage) => resolve(URL.createObjectURL(resizedImage)),
+                "file"
+            );
         });
     }
     const handleMove = (direction) => {
