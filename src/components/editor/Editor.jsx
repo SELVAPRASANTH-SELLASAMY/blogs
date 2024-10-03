@@ -40,9 +40,9 @@ function Editor({popup}){
                     ))
                 }
             </EditorContext.Provider>
-            <figure className={editorStyles.addButton} ref={addButton} aria-disabled onClick={handleAdd}>
+            <span className={editorStyles.addButton} ref={addButton} aria-disabled onClick={handleAdd}>
                 <RiAddCircleFill/>
-            </figure>
+            </span>
         </section>
     );
 }

@@ -4,7 +4,7 @@
 h2::before{
     content: 'blog';
 }
-.editor figure.addButton{
+.editor span.addButton{
     font-size: var(--small-2);
     aspect-ratio: 1/1;
     cursor: pointer;
@@ -13,10 +13,10 @@ h2::before{
     place-content: center;
     transition: scale 250ms;
 }
-.editor button:active,.editor figure:active{
+.editor button:active,.editor span:active{
     scale: .95;
 }
-.editor figure.addButton[aria-disabled="true"]{
+.editor span.addButton[aria-disabled="true"]{
     pointer-events: none;
     opacity: .6;
 }
