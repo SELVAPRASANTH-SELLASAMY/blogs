@@ -19,7 +19,7 @@ function Editor({popup}){
         }
         const saveToLocal = () => {
             localStorage.setItem("blogs",JSON.stringify(blogs));
-            popup.current.display("Draft saved!");
+            popup.current.display("Draft saved!","ok");
         }
         waitingTime.current = setTimeout(saveToLocal,10000);
         return ()=> clearTimeout(waitingTime.current);
