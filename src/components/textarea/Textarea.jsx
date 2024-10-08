@@ -22,13 +22,17 @@ function Textarea({blog,index,length}){
     }
     const handleImageUpload = async(e) => {
         const file = e.target.files[0];
-        const Image = URL.createObjectURL(file);
-        const thumbnail = await resizeImage(file);
-        addBlogs(prevBlogs => {
-            prevBlogs[index].Image = Image;
-            prevBlogs[index].thumb = thumbnail;
-            return [...prevBlogs];
-        });
+        const placeholderImage = await resizeImage(file);
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            const base64String = fileReader.result;
+            addBlogs(prevBlogs => {
+                prevBlogs[index].Image = base64String;
+                prevBlogs[index].PlaceholderImage = placeholderImage;
+                return [...prevBlogs];
+            });
+        }
+        fileReader.readAsDataURL(file);
     }
     const resizeImage = (image) => {
         return new Promise((resolve) => {
@@ -39,8 +43,8 @@ function Textarea({blog,index,length}){
                 "webp",
                 100,
                 0,
-                (resizedImage) => resolve(URL.createObjectURL(resizedImage)),
-                "file"
+                (resizedImage) => resolve(resizedImage),
+                "base64"
             );
         });
     }

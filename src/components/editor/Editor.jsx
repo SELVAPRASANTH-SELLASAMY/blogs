@@ -7,10 +7,10 @@ const EditorContext = createContext();
 function Editor({popup}){
     const addButton = useRef();
     const waitingTime = useRef();
-    const [blogs,addBlogs] = useState(JSON.parse(localStorage.getItem("blogs")) || [{content:'', type:'paragraph'}]);
+    const [blogs,addBlogs] = useState(JSON.parse(localStorage.getItem("blogs")) || [{type:'paragraph'}]);
     const [edit,startEdit] = useState(0);
     const handleAdd = () => {
-        addBlogs([...blogs,{content:'',type:'paragraph'}]);
+        addBlogs([...blogs,{type:'paragraph'}]);
         startEdit(prev => ++prev);
     }
     useEffect(()=>{
@@ -26,7 +26,7 @@ function Editor({popup}){
     },[blogs,popup]);
     useEffect(()=>{
         console.log(blogs);
-        addButton.current.ariaDisabled = blogs[edit].content ? false : true;
+        addButton.current.ariaDisabled = blogs[edit].content || blogs[edit].Image ? false : true;
     },[blogs,edit]);
     return(
         <section className={editorStyles.editor}>

@@ -9,16 +9,16 @@ function Textrenderer({blog,index}){
     }
     return(
         <div onClick={handleClick} className={textrendererStyle.text_renderer}>
-            {blog.type === 'heading' && <h2>{blog.content} <span className="bottomLine"><span className="movingBall"></span></span></h2>}
-            {blog.type === 'sub_heading' && <h5>{blog.content}</h5>}
-            {blog.type === 'paragraph' && <p>{blog.content}</p>}
+            {blog.type === 'heading' && <h2>{blog.content || ''} <span className="bottomLine"><span className="movingBall"></span></span></h2>}
+            {blog.type === 'sub_heading' && <h5>{blog.content || ''}</h5>}
+            {blog.type === 'paragraph' && <p>{blog.content || ''}</p>}
             {blog.type === 'image' && 
-                (blog.Image && blog.thumb) && <Lazyimage componentClass={textrendererStyle.img} placeholder={blog.thumb} source={blog.Image}/>
+                (blog.Image && blog.PlaceholderImage) && <Lazyimage componentClass={textrendererStyle.img} placeholder={blog.PlaceholderImage} source={blog.Image}/>
             }
             {(blog.type === 'description_list' || blog.type === 'tech_stacks') &&
                 <ul className={blog.type === 'tech_stacks' ? textrendererStyle.tech_stacks : null}>
                     {
-                        blog.content.split("\n").map((text,index)=>(
+                        blog.content && blog.content.split("\n").map((text,index)=>(
                             <li key={index}>{text}</li>
                         ))
                     }
